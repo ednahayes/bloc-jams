@@ -1,3 +1,5 @@
+
+
 var albumPicasso = {
      title: 'The Colors',
      artist: 'Pablo Picasso',
@@ -8,7 +10,7 @@ var albumPicasso = {
          { title: 'Blue', duration: '4:26' },
          { title: 'Green', duration: '3:14' },
          { title: 'Red', duration: '5:01' },
-         { title: 'Pink', duration: '3:21'},
+         { title: 'Pink', duration: '3:22'},
          { title: 'Magenta', duration: '2:15'}
      ]
  };
@@ -29,6 +31,24 @@ var albumPicasso = {
      ]
  };
 
+ var albumMatchboxTwenty = {
+     title: 'How Far',
+     artist: 'Rob Thomas',
+     label: 'Zondervan',
+     year: '2014',
+     albumArtUrl: 'assets/images/album_covers/18.png',
+     songs: [
+         { title: 'Look how far', duration: '3:01' },
+         { title: 'Millions', duration: '2:01' },
+         { title: 'Take me', duration: '5:20'},
+         { title: 'Vegas', duration: '3:15' },
+         { title: 'Just one more time', duration: '2:15'}
+     ]
+ };
+
+
+
+
  var createSongRow = function(songNumber, songName, songLength) {
       var template =
          '<tr class="album-view-song-item">'
@@ -40,14 +60,15 @@ var albumPicasso = {
 
       return template;
   };
+  var albumTitle = document.getElementsByClassName('album-view-title')[0];
+  var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+  var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+  var albumImage = document.getElementsByClassName('album-cover-art')[0];
+  var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
   var setCurrentAlbum = function(album) {
     // #1
-    var albumTitle = document.getElementsByClassName('album-view-title')[0];
-    var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-    var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-    var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
 
     // #2
     albumTitle.firstChild.nodeValue = album.title;
@@ -66,4 +87,14 @@ var albumPicasso = {
 
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
+
+    var albums = [albumPicasso, albumMarconi, albumMatchboxTwenty];
+    var index = 1;
+      albumImage.addEventListener("click", function(event) {
+        setCurrentAlbum(albums[index]);
+        index++;
+        if (index == albums.length) {
+          index = 0;
+        }
+      });
 };

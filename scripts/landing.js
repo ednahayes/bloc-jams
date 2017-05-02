@@ -1,5 +1,4 @@
-var pointsArray = document.getElementsByClassName('point');
-
+//Not sure about this var pointsArray
 var animatePoints = function() {
   var revealPoint = function() {
            // #7
@@ -11,7 +10,6 @@ var animatePoints = function() {
        // #6
       $.each($('.point'), revealPoint);
 
-    var points = document.getElementsByClassName('point');
 
 };
 
@@ -26,7 +24,6 @@ $(window).load(function() {
 
 
     $(window).scroll(function(event) {
-         console.log("Current offset from the top is " + sellingPoints.getBoundingClientRect().top + " pixels");
 
         if ($(window).scrollTop() >= scrollDistance) {
           animatePoints();

@@ -152,7 +152,7 @@
          // Update the Player Bar information
          updatePlayerBarSong();
 
-         var $nextSongNumberCell = $('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]');
+         var $nextSongNumberCell = $setSong();
          var $lastSongNumberCell = $('.song-item-number[data-song-number="' + lastSongNumber + '"]');
 
          $nextSongNumberCell.html(pauseButtonTemplate);
@@ -180,9 +180,20 @@
 
          $('.main-controls .play-pause').html(playerBarPauseButton);
 
-         var $previousSongNumberCell = $('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]');
+         var $previousSongNumberCell = $setSong();
          var $lastSongNumberCell = $('.song-item-number[data-song-number="' + lastSongNumber + '"]');
 
          $previousSongNumberCell.html(pauseButtonTemplate);
          $lastSongNumberCell.html(lastSongNumber);
      };
+
+     //assignment 19
+
+     var $setSong = function(songNumber) {
+       var $newValue = $('.song-item-number[data-song-number="' + currentSongFromAlbum +
+       currentlyPlayingSongNumber + '"]');
+     }
+
+     var $getSongNumberCell = function (number) {
+       var $number = $('.song-item-number[data-song-number]');
+     }

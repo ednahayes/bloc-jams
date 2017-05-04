@@ -14,7 +14,7 @@ var setSong = function(songNumber) {
      });
 
          setVolume(currentVolume);
-     };
+  };
 
 var setVolume = function(volume) {
       if (currentSoundFile) {
@@ -22,8 +22,8 @@ var setVolume = function(volume) {
       }
 };
 
-  var $getSongNumberCell = function(number) {
-      Return $('.song-item-number[data-song-number="' + number + '"]');
+  var getSongNumberCell = function(number) {
+      return $('.song-item-number[data-song-number="' + number + '"]');
   };
 
 
@@ -40,7 +40,7 @@ var setVolume = function(volume) {
 
       var onHover = function(event) {
           var songNumberCell = $(this).find('.song-item-number');
-          var songNumber = songNumberCell.attr('data-song-number');
+          var songNumber = parseInt(songNumberCell.attr('data-song-number'));
 
           if (songNumber !== currentlyPlayingSongNumber) {
               songNumberCell.html(playButtonTemplate);
@@ -49,7 +49,7 @@ var setVolume = function(volume) {
 
       var offHover = function(event) {
           var songNumberCell = $(this).find('.song-item-number');
-          var songNumber = songNumberCell.attr('data-song-number');
+          var songNumber = parseInt(songNumberCell.attr('data-song-number'));
 
           if (songNumber !== currentlyPlayingSongNumber) {
               songNumberCell.html(songNumber);
@@ -183,8 +183,6 @@ var setVolume = function(volume) {
          // Set a new current song
          setSong(currentSongIndex + 1);
          currentSoundFile.play();
-         //don't know if below needs to be updated to setSong???
-         currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
 
          // Update the Player Bar information
          updatePlayerBarSong();
@@ -211,8 +209,6 @@ var setVolume = function(volume) {
          // Set a new current song
          setSong(currentSongIndex + 1);
          currentSoundFile.play();
-                  //don't know if below needs to be updated to setSong???
-         currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
 
          // Update the Player Bar information
          updatePlayerBarSong();

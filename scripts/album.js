@@ -225,3 +225,22 @@ var setVolume = function(volume) {
          $previousSongNumberCell.html(pauseButtonTemplate);
          $lastSongNumberCell.html(lastSongNumber);
      };
+
+
+//assignment-20
+$(document).ready(function(){
+ var hold= $('.main-controls .play-pause').click(function(event)
+      togglePlayFromPlayerBar(); );
+    };
+  var togglePlayFromPlayerBar = function() {
+    if (songNumber.isPaused() && playerBarPlayButton.click()) {
+      songNumberCell.html(pauseButtonTemplate);
+      $('.main-controls .play-pause').html(playerBarPauseButton);
+      songNumber.play();
+    }
+    if (songNumber.play() pauseButtonTemplate.click()) {
+      songNumberCell.html(playButtonTemplate);
+      $('.main-controls .play-pause').html(playerBarPlayButton);
+      songNumber.pause();
+    }
+  }

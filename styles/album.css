@@ -86,7 +86,7 @@ body.album {
   }
 
   /* Centered text looks better on smaller devices */
- /* #2 */
+
  @media (max-width: 640px) and (min-width: 320px) {
      .album-view-details {
          text-align: center;
@@ -97,7 +97,7 @@ body.album {
      }
  }
 
- /* #3 */
+
  @media (max-width: 1024px) and (min-width: 320px) {
     .album-view-song-list {
          position: relative;

@@ -8,19 +8,18 @@ var setSong = function(songNumber) {
      currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
 
      currentSoundFile = new buzz.sound(currentSongFromAlbum.audioUrl, {
-
          formats: [ 'mp3' ],
          preload: true
      });
 
-         setVolume(currentVolume);
-  };
+     setVolume(currentVolume);
+};
 
-  var seek = function(time) {
+var seek = function(time) {
       if (currentSoundFile) {
           currentSoundFile.setTime(time);
       }
-  }
+}
 
 var setVolume = function(volume) {
       if (currentSoundFile) {
@@ -28,9 +27,9 @@ var setVolume = function(volume) {
       }
 };
 
-  var getSongNumberCell = function(number) {
+var getSongNumberCell = function(number) {
       return $('.song-item-number[data-song-number="' + number + '"]');
-  };
+};
 
 
  var createSongRow = function(songNumber, songName, songLength) {
@@ -74,8 +73,7 @@ var setVolume = function(volume) {
 
 
   var setCurrentAlbum = function(album) {
-         currentAlbum = album;
-
+    currentAlbum = album;
     var $albumTitle = $('.album-view-title');
     var $albumArtist = $('.album-view-artist');
     var $albumReleaseInfo = $('.album-view-release-info');
@@ -90,7 +88,6 @@ var setVolume = function(volume) {
     $albumSongList.empty();
 
     for (var i = 0; i < album.songs.length; i++) {
-
         var $newRow = createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
         $albumSongList.append($newRow);
     }
@@ -280,6 +277,7 @@ var setupSeekBars = function() {
 
          // Update the Player Bar information
          updatePlayerBarSong();
+         updateSeekBarWhileSongPlays();
 
          var $nextSongNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
          var $lastSongNumberCell = getSongNumberCell(lastSongNumber);
@@ -306,7 +304,8 @@ var setupSeekBars = function() {
 
          // Update the Player Bar information
          updatePlayerBarSong();
-
+         updateSeekBarWhileSongPlays();
+         
          $('.main-controls .play-pause').html(playerBarPauseButton);
 
          var $previousSongNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
@@ -317,9 +316,7 @@ var setupSeekBars = function() {
      };
 
 
-//assignment-21
-
-    var setCurrentTimeInPlayerBar = function(currentTime) {
+  var setCurrentTimeInPlayerBar = function(currentTime) {
         $('.current-time').text(filterTimeCode(currentTime));
 
       }
@@ -335,5 +332,6 @@ var setupSeekBars = function() {
       var seconds = Math.floor(x % 60);
       var songLength = minutes + ":" + seconds;
       return songLength;
-
+      setCurrentTimeInPlayerBar();
+      setTotalTimeInPlayerBar();
   }
